@@ -1,5 +1,31 @@
 # vk_alg2
 
+## part 0
+```
+[==========] Running 7 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 7 tests from SortHashAlgorithmsTest
+[ RUN      ] SortHashAlgorithmsTest.CopyTimeTest
+[       OK ] SortHashAlgorithmsTest.CopyTimeTest (0 ms)
+[ RUN      ] SortHashAlgorithmsTest.FeedAnimalsTest
+[       OK ] SortHashAlgorithmsTest.FeedAnimalsTest (0 ms)
+[ RUN      ] SortHashAlgorithmsTest.FindTheDifferenceTest
+[       OK ] SortHashAlgorithmsTest.FindTheDifferenceTest (0 ms)
+[ RUN      ] SortHashAlgorithmsTest.TwoSumTest
+[       OK ] SortHashAlgorithmsTest.TwoSumTest (0 ms)
+[ RUN      ] SortHashAlgorithmsTest.ShellSortTest
+[       OK ] SortHashAlgorithmsTest.ShellSortTest (0 ms)
+[ RUN      ] SortHashAlgorithmsTest.GroupAnagramsTest
+[       OK ] SortHashAlgorithmsTest.GroupAnagramsTest (0 ms)
+[ RUN      ] SortHashAlgorithmsTest.IntegerSqrtTest
+[       OK ] SortHashAlgorithmsTest.IntegerSqrtTest (0 ms)
+[----------] 7 tests from SortHashAlgorithmsTest (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 7 tests from 1 test suite ran. (5 ms total)
+[  PASSED  ] 7 tests.
+```
+
 ## part 1
 ```
 [==========] Running 8 tests from 1 test suite.
