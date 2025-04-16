@@ -9,16 +9,16 @@
 #include <vector>
 #include <stdexcept>
 
-// Копирование листов
+// ГЉГ®ГЇГЁГ°Г®ГўГ Г­ГЁГҐ Г«ГЁГ±ГІГ®Гў
 long long copyTime(int n, int x, int y) {
     if (n <= 0) return 0;
     if (n == 1) return 0;
 
-    // x - время более быстрого принтера
+    // x - ГўГ°ГҐГ¬Гї ГЎГ®Г«ГҐГҐ ГЎГ»Г±ГІГ°Г®ГЈГ® ГЇГ°ГЁГ­ГІГҐГ°Г 
     if (x > y) std::swap(x, y);
 
-    long long first_copy_time = x; // на первую копию
-    int copies_needed = n - 1; // сколько копий нужно сделать
+    long long first_copy_time = x; // Г­Г  ГЇГҐГ°ГўГіГѕ ГЄГ®ГЇГЁГѕ
+    int copies_needed = n - 1; // Г±ГЄГ®Г«ГјГЄГ® ГЄГ®ГЇГЁГ© Г­ГіГ¦Г­Г® Г±Г¤ГҐГ«Г ГІГј
 
     long long left = 0;
 
@@ -41,12 +41,12 @@ long long copyTime(int n, int x, int y) {
     return first_copy_time + min_time_for_rest;
 }
 
-// Накормить животных
+// ГЌГ ГЄГ®Г°Г¬ГЁГІГј Г¦ГЁГўГ®ГІГ­Г»Гµ
 int feedAnimals(std::vector<int>& animals, std::vector<int>& food) {
     if (animals.empty() || food.empty())
         return 0;
 
-    // Сортируем оба массива
+    // Г‘Г®Г°ГІГЁГ°ГіГҐГ¬ Г®ГЎГ  Г¬Г Г±Г±ГЁГўГ 
     std::sort(animals.begin(), animals.end());
     std::sort(food.begin(), food.end());
 
@@ -55,7 +55,7 @@ int feedAnimals(std::vector<int>& animals, std::vector<int>& food) {
 
     for (int animal_appetite : animals) {
         while (food_idx < food.size() && food[food_idx] < animal_appetite)
-            food_idx++; // порция мала, берем следующую
+            food_idx++; // ГЇГ®Г°Г¶ГЁГї Г¬Г Г«Г , ГЎГҐГ°ГҐГ¬ Г±Г«ГҐГ¤ГіГѕГ№ГіГѕ
 
         if (food_idx < food.size()) {
             fed_count++;
@@ -69,7 +69,7 @@ int feedAnimals(std::vector<int>& animals, std::vector<int>& food) {
 }
 
 
-// Найти разницу между двух строк
+// ГЌГ Г©ГІГЁ Г°Г Г§Г­ГЁГ¶Гі Г¬ГҐГ¦Г¤Гі Г¤ГўГіГµ Г±ГІГ°Г®ГЄ
 char findTheDifference(const std::string& a, const std::string& b) {
     if (b.length() != a.length() + 1) {
         return '\0';
@@ -89,15 +89,15 @@ char findTheDifference(const std::string& a, const std::string& b) {
     return result_char_code;
 }
 
-// Сумма двух элементов массива
+// Г‘ГіГ¬Г¬Г  Г¤ГўГіГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г Г±Г±ГЁГўГ 
 std::vector<int> twoSum(const std::vector<int>& data, int target) {
-    std::unordered_map<int, int> cache; // элемент, индекс
+    std::unordered_map<int, int> cache; // ГЅГ«ГҐГ¬ГҐГ­ГІ, ГЁГ­Г¤ГҐГЄГ±
 
     for (int i = 0; i < data.size(); ++i) {
         int current_val = data[i];
         int complement = target - current_val;
 
-        // Ищем в кеше
+        // Г€Г№ГҐГ¬ Гў ГЄГҐГёГҐ
         auto it = cache.find(complement);
         if (it != cache.end()) {
             return { it->second, i };
@@ -109,19 +109,19 @@ std::vector<int> twoSum(const std::vector<int>& data, int target) {
     return {};
 }
 
-// Сортировка Шелла
+// Г‘Г®Г°ГІГЁГ°Г®ГўГЄГ  ГГҐГ«Г«Г 
 void shellSort(std::vector<int>& arr) {
     int n = arr.size();
     if (n < 2) return;
 
-    // Определяем максимальный шаг (2^k - 1) < n
+    // ГЋГЇГ°ГҐГ¤ГҐГ«ГїГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г»Г© ГёГ ГЈ (2^k - 1) < n
     int gap = 1;
     while (gap * 2 + 1 < n)
         gap = gap * 2 + 1;
 
 
     while (gap >= 1) {
-        // Выполняем сортировку вставками для элементов с шагом gap
+        // Г‚Г»ГЇГ®Г«Г­ГїГҐГ¬ Г±Г®Г°ГІГЁГ°Г®ГўГЄГі ГўГ±ГІГ ГўГЄГ Г¬ГЁ Г¤Г«Гї ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г± ГёГ ГЈГ®Г¬ gap
         for (int i = gap; i < n; ++i) {
             int temp = arr[i];
             int j = i;
@@ -130,15 +130,15 @@ void shellSort(std::vector<int>& arr) {
                 arr[j] = arr[j - gap];
                 j -= gap;
             }
-            arr[j] = temp; // Вставляем temp на правильное место
+            arr[j] = temp; // Г‚Г±ГІГ ГўГ«ГїГҐГ¬ temp Г­Г  ГЇГ°Г ГўГЁГ«ГјГ­Г®ГҐ Г¬ГҐГ±ГІГ®
         }
-        // переходим к предыдущему шагу
+        // ГЇГҐГ°ГҐГµГ®Г¤ГЁГ¬ ГЄ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГҐГ¬Гі ГёГ ГЈГі
         gap = (gap - 1) / 2;
     }
 }
 
 
-// Массив анаграмм
+// ГЊГ Г±Г±ГЁГў Г Г­Г ГЈГ°Г Г¬Г¬
 std::vector<std::vector<std::string>> groupAnagrams(const std::vector<std::string>& strs) {
     std::unordered_map<std::string, std::vector<std::string>> anagram_groups;
 
@@ -158,16 +158,16 @@ std::vector<std::vector<std::string>> groupAnagrams(const std::vector<std::strin
     return result;
 }
 
-// Найти корень числа
+// ГЌГ Г©ГІГЁ ГЄГ®Г°ГҐГ­Гј Г·ГЁГ±Г«Г 
 int integerSqrt(int target) {
     if (target < 0) 
-        throw std::invalid_argument("корень не определен");
+        throw std::invalid_argument("ГЄГ®Г°ГҐГ­Гј Г­ГҐ Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­");
 
     if (target == 0 || target == 1) 
         return target;
 
     long long left = 0;
-    // в теории достаточно до target/2 + 1
+    // Гў ГІГҐГ®Г°ГЁГЁ Г¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤Г® target/2 + 1
     long long right = target;
     int result = 0;
 
@@ -184,11 +184,11 @@ int integerSqrt(int target) {
             return mid;
         }
         else if (square < target) {
-            result = mid; // кандидат на ответ
-            left = static_cast<long long>(mid) + 1; // больший корень
+            result = mid; // ГЄГ Г­Г¤ГЁГ¤Г ГІ Г­Г  Г®ГІГўГҐГІ
+            left = static_cast<long long>(mid) + 1; // ГЎГ®Г«ГјГёГЁГ© ГЄГ®Г°ГҐГ­Гј
         }
         else {
-            right = static_cast<long long>(mid) - 1; // точно меньше
+            right = static_cast<long long>(mid) - 1; // ГІГ®Г·Г­Г® Г¬ГҐГ­ГјГёГҐ
         }
     }
 

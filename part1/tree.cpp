@@ -8,7 +8,7 @@
 
 TreeNode* buildTreeRec(const std::vector<std::optional<int>>& arr, size_t i) {
     if (i >= arr.size() || !arr[i].has_value()) {
-        return nullptr; // Индекс вне границ или значение nullopt
+        return nullptr; // Г€Г­Г¤ГҐГЄГ± ГўГ­ГҐ ГЈГ°Г Г­ГЁГ¶ ГЁГ«ГЁ Г§Г­Г Г·ГҐГ­ГЁГҐ nullopt
     }
 
     TreeNode* root = new TreeNode(arr[i].value());
@@ -17,7 +17,7 @@ TreeNode* buildTreeRec(const std::vector<std::optional<int>>& arr, size_t i) {
     return root;
 }
 
-// Сравнение двух деревьев
+// Г‘Г°Г ГўГ­ГҐГ­ГЁГҐ Г¤ГўГіГµ Г¤ГҐГ°ГҐГўГјГҐГў
 bool isSameTree(TreeNode* p, TreeNode* q) {
     if (!p && !q) return true;
     if (!p || !q) return false;
@@ -35,15 +35,15 @@ int dfsMirror(TreeNode* left, TreeNode* right) {
     return count;
 }
 
-// Восстановление бинарного дерева из массива
+// Г‚Г®Г±Г±ГІГ Г­Г®ГўГ«ГҐГ­ГЁГҐ ГЎГЁГ­Г Г°Г­Г®ГЈГ® Г¤ГҐГ°ГҐГўГ  ГЁГ§ Г¬Г Г±Г±ГЁГўГ 
 TreeNode* buildTree(const std::vector<std::optional<int>>& arr) {
     if (arr.empty() || !arr[0].has_value()) {
-        return nullptr; // Пустой массив или корень null
+        return nullptr; // ГЏГіГ±ГІГ®Г© Г¬Г Г±Г±ГЁГў ГЁГ«ГЁ ГЄГ®Г°ГҐГ­Гј null
     }
     return buildTreeRec(arr, 0);
 }
 
-// Проверка на симметричность бинарного дерева
+// ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г±ГЁГ¬Г¬ГҐГІГ°ГЁГ·Г­Г®Г±ГІГј ГЎГЁГ­Г Г°Г­Г®ГЈГ® Г¤ГҐГ°ГҐГўГ 
 bool isSymmetric(TreeNode* root) {
     if (!root) {
         return true;
@@ -60,7 +60,7 @@ bool isSymmetric(TreeNode* root) {
         if (!t1 || !t2) return false;
         if (t1->val != t2->val) return false;
 
-        // Добавляем в очередь в зеркальном порядке
+        // Г„Г®ГЎГ ГўГ«ГїГҐГ¬ Гў Г®Г·ГҐГ°ГҐГ¤Гј Гў Г§ГҐГ°ГЄГ Г«ГјГ­Г®Г¬ ГЇГ®Г°ГїГ¤ГЄГҐ
         q.push(t1->left);
         q.push(t2->right);
         q.push(t1->right);
@@ -69,12 +69,12 @@ bool isSymmetric(TreeNode* root) {
     return true;
 }
 
-// Поиск минимальной глубины
+// ГЏГ®ГЁГ±ГЄ Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®Г© ГЈГ«ГіГЎГЁГ­Г»
 int minDepth(TreeNode* root) {
     if (!root) {
         return 0;
     }
-    std::queue<std::pair<TreeNode*, int>> q; // узел и его глубина
+    std::queue<std::pair<TreeNode*, int>> q; // ГіГ§ГҐГ« ГЁ ГҐГЈГ® ГЈГ«ГіГЎГЁГ­Г 
     q.push({ root, 1 });
 
     while (!q.empty()) {
@@ -82,12 +82,12 @@ int minDepth(TreeNode* root) {
         int currentDepth = q.front().second;
         q.pop();
 
-        // Проверяем, является ли узел листом
+        // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬, ГїГўГ«ГїГҐГІГ±Гї Г«ГЁ ГіГ§ГҐГ« Г«ГЁГ±ГІГ®Г¬
         if (!currentNode->left && !currentNode->right) {
             return currentDepth;
         }
 
-        // Добавляем дочерние узлы в очередь
+        // Г„Г®ГЎГ ГўГ«ГїГҐГ¬ Г¤Г®Г·ГҐГ°Г­ГЁГҐ ГіГ§Г«Г» Гў Г®Г·ГҐГ°ГҐГ¤Гј
         if (currentNode->left) {
             q.push({ currentNode->left, currentDepth + 1 });
         }
@@ -98,19 +98,19 @@ int minDepth(TreeNode* root) {
     return 0;
 }
 
-// Поиск произведения минимального и максимального элементов
+// ГЏГ®ГЁГ±ГЄ ГЇГ°Г®ГЁГ§ГўГҐГ¤ГҐГ­ГЁГї Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЁ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
 long long maxMinProduct(TreeNode* root) {
     if (!root) {
-        throw std::invalid_argument("Дерево не должно быть пустым");
+        throw std::invalid_argument("Г„ГҐГ°ГҐГўГ® Г­ГҐ Г¤Г®Г«Г¦Г­Г® ГЎГ»ГІГј ГЇГіГ±ГІГ»Г¬");
     }
 
-    // Поиск минимального элемента
+    // ГЏГ®ГЁГ±ГЄ Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
     TreeNode* minNode = root;
     while (minNode->left) {
         minNode = minNode->left;
     }
 
-    // Поиск максимального элемента
+    // ГЏГ®ГЁГ±ГЄ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
     TreeNode* maxNode = root;
     while (maxNode->right) {
         maxNode = maxNode->right;
@@ -119,7 +119,7 @@ long long maxMinProduct(TreeNode* root) {
     return static_cast<long long>(minNode->val) * maxNode->val;
 }
 
-// Является ли дерево В поддеревом для А
+// ГџГўГ«ГїГҐГІГ±Гї Г«ГЁ Г¤ГҐГ°ГҐГўГ® Г‚ ГЇГ®Г¤Г¤ГҐГ°ГҐГўГ®Г¬ Г¤Г«Гї ГЂ
 bool isSubtree(TreeNode* root, TreeNode* subRoot) {
     if (!subRoot) return true;
     if (!root) return false;
@@ -129,7 +129,7 @@ bool isSubtree(TreeNode* root, TreeNode* subRoot) {
     return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
 }
 
-// Зеркальные узлы
+// Г‡ГҐГ°ГЄГ Г«ГјГ­Г»ГҐ ГіГ§Г«Г»
 int countMirrorNodes(TreeNode* root) {
     if (!root) {
         return 0;

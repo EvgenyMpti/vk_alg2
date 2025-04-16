@@ -10,23 +10,23 @@
 #include <vector>
 #include <optional>
 
-// Копирование листов
+// ГЉГ®ГЇГЁГ°Г®ГўГ Г­ГЁГҐ Г«ГЁГ±ГІГ®Гў
 long long copyTime(int n, int x, int y);
 
-// Накормить животных
+// ГЌГ ГЄГ®Г°Г¬ГЁГІГј Г¦ГЁГўГ®ГІГ­Г»Гµ
 int feedAnimals(std::vector<int>& animals, std::vector<int>& food);
 
-// Найти разницу между двух строк
+// ГЌГ Г©ГІГЁ Г°Г Г§Г­ГЁГ¶Гі Г¬ГҐГ¦Г¤Гі Г¤ГўГіГµ Г±ГІГ°Г®ГЄ
 char findTheDifference(const std::string& a, const std::string& b);
 
-// Сумма двух элементов массива
+// Г‘ГіГ¬Г¬Г  Г¤ГўГіГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г Г±Г±ГЁГўГ 
 std::vector<int> twoSum(const std::vector<int>& data, int target);
 
-// Сортировка Шелла
+// Г‘Г®Г°ГІГЁГ°Г®ГўГЄГ  ГГҐГ«Г«Г 
 void shellSort(std::vector<int>& arr);
 
-// Массив анаграмм
+// ГЊГ Г±Г±ГЁГў Г Г­Г ГЈГ°Г Г¬Г¬
 std::vector<std::vector<std::string>> groupAnagrams(const std::vector<std::string>& strs);
 
-// Найти корень числа
+// ГЌГ Г©ГІГЁ ГЄГ®Г°ГҐГ­Гј Г·ГЁГ±Г«Г 
 int integerSqrt(int target);

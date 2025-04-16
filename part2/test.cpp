@@ -17,7 +17,7 @@ protected:
     }
 };
 
-// Сравнение двух деревьев
+// Г‘Г°Г ГўГ­ГҐГ­ГЁГҐ Г¤ГўГіГµ Г¤ГҐГ°ГҐГўГјГҐГў
 bool isSameTree(TreeNode* p, TreeNode* q) {
     if (!p && !q) return true;
     if (!p || !q) return false;
@@ -35,19 +35,19 @@ TEST_F(HeapTest, IsHeapTest) {
 }
 
 TEST_F(HeapTest, IsCompleteTreeTest) {
-    // Полное дерево: [1, 2, 3, 4, 5, 6]
+    // ГЏГ®Г«Г­Г®ГҐ Г¤ГҐГ°ГҐГўГ®: [1, 2, 3, 4, 5, 6]
     std::vector<std::optional<int>> complete_arr = { 1, 2, 3, 4, 5, 6 };
     TreeNode* complete_root = buildTree(complete_arr);
     EXPECT_TRUE(isCompleteTree(complete_root));
     delete complete_root;
 
-    // Неполное дерево: [1, 2, 3, 4, std::nullopt, 6]
+    // ГЌГҐГЇГ®Г«Г­Г®ГҐ Г¤ГҐГ°ГҐГўГ®: [1, 2, 3, 4, std::nullopt, 6]
     std::vector<std::optional<int>> incomplete_arr = { 1, 2, 3, 4, std::nullopt, 6 };
     TreeNode* incomplete_root = buildTree(incomplete_arr);
     EXPECT_FALSE(isCompleteTree(incomplete_root));
     delete incomplete_root;
 
-    // Неполное: [1, 2, 3, null, 5]
+    // ГЌГҐГЇГ®Г«Г­Г®ГҐ: [1, 2, 3, null, 5]
     std::vector<std::optional<int>> incomplete_arr2 = { 1, 2, 3, std::nullopt, 5 };
     TreeNode* incomplete_root2 = buildTree(incomplete_arr2);
     EXPECT_FALSE(isCompleteTree(incomplete_root2));
@@ -81,14 +81,14 @@ TEST_F(HeapTest, KthSmallestLargest) {
 
     EXPECT_EQ(kthSmallest(bst_root, 1).value_or(-1), 2);
     EXPECT_EQ(kthSmallest(bst_root, 3).value_or(-1), 8);
-    EXPECT_EQ(kthSmallest(bst_root, 8).value_or(-1), 16); // Корень
+    EXPECT_EQ(kthSmallest(bst_root, 8).value_or(-1), 16); // ГЉГ®Г°ГҐГ­Гј
     EXPECT_EQ(kthSmallest(bst_root, 15).value_or(-1), 27);
     EXPECT_FALSE(kthSmallest(bst_root, 0).has_value());
     EXPECT_FALSE(kthSmallest(bst_root, 16).has_value());
 
     EXPECT_EQ(kthLargest(bst_root, 1).value_or(-1), 27);
     EXPECT_EQ(kthLargest(bst_root, 3).value_or(-1), 23);
-    EXPECT_EQ(kthLargest(bst_root, 8).value_or(-1), 16); // Корень
+    EXPECT_EQ(kthLargest(bst_root, 8).value_or(-1), 16); // ГЉГ®Г°ГҐГ­Гј
     EXPECT_EQ(kthLargest(bst_root, 15).value_or(-1), 2);
     EXPECT_FALSE(kthLargest(bst_root, 0).has_value());
     EXPECT_FALSE(kthLargest(bst_root, 16).has_value());

@@ -26,7 +26,7 @@ TreeNode* buildTree(const std::vector<std::optional<int>>& arr) {
     return buildTreeRec(arr, 0);
 }
 
-// Проверка корректности кучи
+// ГЏГ°Г®ГўГҐГ°ГЄГ  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГЁ ГЄГіГ·ГЁ
 bool isHeap(const std::vector<int>& arr, bool isMaxheap) {
     size_t n = arr.size();
     if (n <= 1)
@@ -38,7 +38,7 @@ bool isHeap(const std::vector<int>& arr, bool isMaxheap) {
     else
         compare = std::less_equal<int>();
 
-    // Проверяем только внутренние узлы
+    // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ ГІГ®Г«ГјГЄГ® ГўГ­ГіГІГ°ГҐГ­Г­ГЁГҐ ГіГ§Г«Г»
     for (size_t i = 0; i <= (n / 2) - 1; ++i) {
         size_t leftChildIdx = 2 * i + 1;
         size_t rightChildIdx = 2 * i + 2;
@@ -52,14 +52,14 @@ bool isHeap(const std::vector<int>& arr, bool isMaxheap) {
     return true;
 }
 
-// Проверка на полное бинарное дерево
+// ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЇГ®Г«Г­Г®ГҐ ГЎГЁГ­Г Г°Г­Г®ГҐ Г¤ГҐГ°ГҐГўГ®
 bool isCompleteTree(TreeNode* root) {
     if (!root)
         return true;
 
     std::queue<TreeNode*> q;
     q.push(root);
-    bool nullEncountered = false; // встретился ли уже null узел
+    bool nullEncountered = false; // ГўГ±ГІГ°ГҐГІГЁГ«Г±Гї Г«ГЁ ГіГ¦ГҐ null ГіГ§ГҐГ«
 
     while (!q.empty()) {
         TreeNode* current = q.front();
@@ -79,9 +79,9 @@ bool isCompleteTree(TreeNode* root) {
     return true;
 }
 
-// Объединение отсортированных массивов
+// ГЋГЎГєГҐГ¤ГЁГ­ГҐГ­ГЁГҐ Г®ГІГ±Г®Г°ГІГЁГ°Г®ГўГ Г­Г­Г»Гµ Г¬Г Г±Г±ГЁГўГ®Гў
 std::vector<int> mergeKSortedArrays(const std::vector<std::vector<int>>& arrays) {
-    // значение, индекс_массива, индекс_элемента
+    // Г§Г­Г Г·ГҐГ­ГЁГҐ, ГЁГ­Г¤ГҐГЄГ±_Г¬Г Г±Г±ГЁГўГ , ГЁГ­Г¤ГҐГЄГ±_ГЅГ«ГҐГ¬ГҐГ­ГІГ 
     using Element = std::tuple<int, size_t, size_t>;
 
     std::priority_queue<Element, std::vector<Element>, std::greater<Element>> minHeap;
@@ -93,14 +93,14 @@ std::vector<int> mergeKSortedArrays(const std::vector<std::vector<int>>& arrays)
 
     std::vector<int> result;
 
-    // Извлечение минимальных элементов из кучи
+    // Г€Г§ГўГ«ГҐГ·ГҐГ­ГЁГҐ Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г»Гµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў ГЁГ§ ГЄГіГ·ГЁ
     while (!minHeap.empty()) {
         auto [value, arrayIdx, elementIdx] = minHeap.top();
         minHeap.pop();
 
         result.push_back(value);
 
-        // Если в текущем массиве есть следующий элемент, добавляем его в кучу
+        // Г…Г±Г«ГЁ Гў ГІГҐГЄГіГ№ГҐГ¬ Г¬Г Г±Г±ГЁГўГҐ ГҐГ±ГІГј Г±Г«ГҐГ¤ГіГѕГ№ГЁГ© ГЅГ«ГҐГ¬ГҐГ­ГІ, Г¤Г®ГЎГ ГўГ«ГїГҐГ¬ ГҐГЈГ® Гў ГЄГіГ·Гі
         size_t nextElementIdx = elementIdx + 1;
         if (nextElementIdx < arrays[arrayIdx].size()) {
             minHeap.push({ arrays[arrayIdx][nextElementIdx], arrayIdx, nextElementIdx });
@@ -110,7 +110,7 @@ std::vector<int> mergeKSortedArrays(const std::vector<std::vector<int>>& arrays)
     return result;
 }
 
-// K наименьший элемент
+// K Г­Г ГЁГ¬ГҐГ­ГјГёГЁГ© ГЅГ«ГҐГ¬ГҐГ­ГІ
 std::optional<int> kthSmallest(TreeNode* root, int k) {
     if (k <= 0) return std::nullopt;
 
@@ -119,13 +119,13 @@ std::optional<int> kthSmallest(TreeNode* root, int k) {
     int count = 0;
 
     while (current || !s.empty()) {
-        // Идем влево до упора, добавляя узлы в стек
+        // Г€Г¤ГҐГ¬ ГўГ«ГҐГўГ® Г¤Г® ГіГЇГ®Г°Г , Г¤Г®ГЎГ ГўГ«ГїГї ГіГ§Г«Г» Гў Г±ГІГҐГЄ
         while (current) {
             s.push(current);
             current = current->left;
         }
 
-        // Достаем узел из стека
+        // Г„Г®Г±ГІГ ГҐГ¬ ГіГ§ГҐГ« ГЁГ§ Г±ГІГҐГЄГ 
         current = s.top();
         s.pop();
 
@@ -133,14 +133,14 @@ std::optional<int> kthSmallest(TreeNode* root, int k) {
         if (count == k)
             return current->val;
 
-        // Переходим к правому поддереву
+        // ГЏГҐГ°ГҐГµГ®Г¤ГЁГ¬ ГЄ ГЇГ°Г ГўГ®Г¬Гі ГЇГ®Г¤Г¤ГҐГ°ГҐГўГі
         current = current->right;
     }
 
     return std::nullopt;
 }
 
-// K наибольший элемент
+// K Г­Г ГЁГЎГ®Г«ГјГёГЁГ© ГЅГ«ГҐГ¬ГҐГ­ГІ
 std::optional<int> kthLargest(TreeNode* root, int k) {
     if (k <= 0) return std::nullopt;
 
@@ -149,13 +149,13 @@ std::optional<int> kthLargest(TreeNode* root, int k) {
     int count = 0;
 
     while (current || !s.empty()) {
-        // Идем вправо до упора, добавляя узлы в стек
+        // Г€Г¤ГҐГ¬ ГўГЇГ°Г ГўГ® Г¤Г® ГіГЇГ®Г°Г , Г¤Г®ГЎГ ГўГ«ГїГї ГіГ§Г«Г» Гў Г±ГІГҐГЄ
         while (current) {
             s.push(current);
             current = current->right;
         }
 
-        // Достаем узел из стека
+        // Г„Г®Г±ГІГ ГҐГ¬ ГіГ§ГҐГ« ГЁГ§ Г±ГІГҐГЄГ 
         current = s.top();
         s.pop();
 
@@ -163,7 +163,7 @@ std::optional<int> kthLargest(TreeNode* root, int k) {
         if (count == k)
             return current->val;
 
-        // Переходим к левому поддереву
+        // ГЏГҐГ°ГҐГµГ®Г¤ГЁГ¬ ГЄ Г«ГҐГўГ®Г¬Гі ГЇГ®Г¤Г¤ГҐГ°ГҐГўГі
         current = current->left;
     }
     return std::nullopt;
@@ -176,19 +176,19 @@ int calculateHaBF(TreeNode* node) {
     int leftHeight = calculateHaBF(node->left);
     int rightHeight = calculateHaBF(node->right);
 
-    // Рассчитываем и сохраняем balance factor
+    // ГђГ Г±Г±Г·ГЁГІГ»ГўГ ГҐГ¬ ГЁ Г±Г®ГµГ°Г Г­ГїГҐГ¬ balance factor
     node->balance_factor = leftHeight - rightHeight;
 
-    // Возвращаем высоту текущего узла
+    // Г‚Г®Г§ГўГ°Г Г№Г ГҐГ¬ ГўГ»Г±Г®ГІГі ГІГҐГЄГіГ№ГҐГЈГ® ГіГ§Г«Г 
     return 1 + std::max(leftHeight, rightHeight);
 }
 
-// Расчет Balance factor
+// ГђГ Г±Г·ГҐГІ Balance factor
 void setBalanceFactors(TreeNode* root) {
     calculateHaBF(root);
 }
 
-// Преобразование в зеркальное дерево
+// ГЏГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГҐ Гў Г§ГҐГ°ГЄГ Г«ГјГ­Г®ГҐ Г¤ГҐГ°ГҐГўГ®
 TreeNode* invertTree(TreeNode* root) {
     if (!root)
         return nullptr;
@@ -200,7 +200,7 @@ TreeNode* invertTree(TreeNode* root) {
         TreeNode* current = q.front();
         q.pop();
 
-        // Обмен левого и правого потомков
+        // ГЋГЎГ¬ГҐГ­ Г«ГҐГўГ®ГЈГ® ГЁ ГЇГ°Г ГўГ®ГЈГ® ГЇГ®ГІГ®Г¬ГЄГ®Гў
         std::swap(current->left, current->right);
 
         if (current->left)
