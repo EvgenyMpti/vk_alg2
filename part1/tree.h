@@ -18,20 +18,20 @@ struct TreeNode {
     }
 };
 
-TreeNode* buildTreeRecOpt(const std::vector<std::optional<int>>& arr, size_t i);
+TreeNode* buildTreeRec(const std::vector<std::optional<int>>& arr, size_t i);
 
 // Восстановление бинарного дерева из массива
-TreeNode* buildTreeOpt(const std::vector<std::optional<int>>& arr);
+TreeNode* buildTree(const std::vector<std::optional<int>>& arr);
 
 // Проверка на симметричность бинарного дерева
-bool isSymmetricOpt(TreeNode* root);
+bool isSymmetric(TreeNode* root);
 
 // Поиск минимальной глубины
-int minDepthOpt(TreeNode* root);
+int minDepth(TreeNode* root);
 
 // Поиск произведения минимального и максимального элементов
 // Принимает TreeNode* бинарного дерева ПОИСКА
-long long maxMinProductBST(TreeNode* root);
+long long maxMinProduct(TreeNode* root);
 
 // Сравнение двух деревьев
 bool isSameTree(TreeNode* p, TreeNode* q);

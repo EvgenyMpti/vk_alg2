@@ -6,14 +6,14 @@
 #include <stdexcept>
 
 
-TreeNode* buildTreeRecOpt(const std::vector<std::optional<int>>& arr, size_t i) {
+TreeNode* buildTreeRec(const std::vector<std::optional<int>>& arr, size_t i) {
     if (i >= arr.size() || !arr[i].has_value()) {
         return nullptr; // Индекс вне границ или значение nullopt
     }
 
     TreeNode* root = new TreeNode(arr[i].value());
-    root->left = buildTreeRecOpt(arr, 2 * i + 1);
-    root->right = buildTreeRecOpt(arr, 2 * i + 2);
+    root->left = buildTreeRec(arr, 2 * i + 1);
+    root->right = buildTreeRec(arr, 2 * i + 2);
     return root;
 }
 
@@ -36,15 +36,15 @@ int dfsMirror(TreeNode* left, TreeNode* right) {
 }
 
 // Восстановление бинарного дерева из массива
-TreeNode* buildTreeOpt(const std::vector<std::optional<int>>& arr) {
+TreeNode* buildTree(const std::vector<std::optional<int>>& arr) {
     if (arr.empty() || !arr[0].has_value()) {
         return nullptr; // Пустой массив или корень null
     }
-    return buildTreeRecOpt(arr, 0);
+    return buildTreeRec(arr, 0);
 }
 
 // Проверка на симметричность бинарного дерева
-bool isSymmetricOpt(TreeNode* root) {
+bool isSymmetric(TreeNode* root) {
     if (!root) {
         return true;
     }
@@ -70,7 +70,7 @@ bool isSymmetricOpt(TreeNode* root) {
 }
 
 // Поиск минимальной глубины
-int minDepthOpt(TreeNode* root) {
+int minDepth(TreeNode* root) {
     if (!root) {
         return 0;
     }
@@ -99,7 +99,7 @@ int minDepthOpt(TreeNode* root) {
 }
 
 // Поиск произведения минимального и максимального элементов
-long long maxMinProductBST(TreeNode* root) {
+long long maxMinProduct(TreeNode* root) {
     if (!root) {
         throw std::invalid_argument("Дерево не должно быть пустым");
     }
