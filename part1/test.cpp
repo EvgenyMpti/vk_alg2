@@ -25,7 +25,7 @@ TEST_F(TreeTest, BuildTreeBasic) {
 }
 
 TEST_F(TreeTest, BuildTreeWithNulls) {
-    // Äåðåâî: 1 -> (null, 2 -> (3, null))
+    // Дерево: 1 -> (null, 2 -> (3, null))
     std::vector<std::optional<int>> arr = { 1, std::nullopt, 2, std::nullopt, std::nullopt, 3, std::nullopt };
     TreeNode* root = buildTree(arr);
 
@@ -42,19 +42,19 @@ TEST_F(TreeTest, BuildTreeWithNulls) {
 }
 
 TEST_F(TreeTest, IsSymmetric) {
-    // Ñèììåòðè÷íîå
+    // Симметричное
     std::vector<std::optional<int>> sym_arr = { 3, 8, 8, 9, 6, 6, 9 };
     TreeNode* sym_root = buildTree(sym_arr);
     EXPECT_TRUE(isSymmetric(sym_root));
     delete sym_root;
 
-    // Àñèììåòðè÷íîå
+    // Асимметричное
     std::vector<std::optional<int>> asym_arr = { 3, 8, 7, 9, 6, std::nullopt, 9 };
     TreeNode* asym_root = buildTree(asym_arr);
     EXPECT_FALSE(isSymmetric(asym_root));
     delete asym_root;
 
-    // + àñèììåòðè÷íîå
+    // + асимметричное
     std::vector<std::optional<int>> asym_arr2 = { 1, 2, 2, std::nullopt, 3, std::nullopt, 3 };
     TreeNode* asym_root2 = buildTree(asym_arr2);
     EXPECT_FALSE(isSymmetric(asym_root2));
@@ -70,14 +70,14 @@ TEST_F(TreeTest, MinDepth) {
     depth_root->right = new TreeNode(2);
     depth_root->left->left = new TreeNode(7);
     depth_root->right->left = new TreeNode(11);
-    depth_root->right->right = new TreeNode(9); // Ëèñò
-    depth_root->right->left->left = new TreeNode(6); // Ëèñò
+    depth_root->right->right = new TreeNode(9); // Лист
+    depth_root->right->left->left = new TreeNode(6); // Лист
 
     EXPECT_EQ(minDepth(depth_root), 3);
     delete depth_root;
 
     TreeNode* simple_root = new TreeNode(1);
-    simple_root->left = new TreeNode(2); // Ëèñò
+    simple_root->left = new TreeNode(2); // Лист
     EXPECT_EQ(minDepth(simple_root), 2);
     delete simple_root;
 

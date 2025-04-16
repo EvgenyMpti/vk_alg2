@@ -8,7 +8,7 @@
 
 TreeNode* buildTreeRec(const std::vector<std::optional<int>>& arr, size_t i) {
     if (i >= arr.size() || !arr[i].has_value()) {
-        return nullptr; // Èíäåêñ âíå ãðàíèö èëè çíà÷åíèå nullopt
+        return nullptr; // Индекс вне границ или значение nullopt
     }
 
     TreeNode* root = new TreeNode(arr[i].value());
@@ -17,7 +17,7 @@ TreeNode* buildTreeRec(const std::vector<std::optional<int>>& arr, size_t i) {
     return root;
 }
 
-// Ñðàâíåíèå äâóõ äåðåâüåâ
+// Сравнение двух деревьев
 bool isSameTree(TreeNode* p, TreeNode* q) {
     if (!p && !q) return true;
     if (!p || !q) return false;
@@ -35,15 +35,15 @@ int dfsMirror(TreeNode* left, TreeNode* right) {
     return count;
 }
 
-// Âîññòàíîâëåíèå áèíàðíîãî äåðåâà èç ìàññèâà
+// Восстановление бинарного дерева из массива
 TreeNode* buildTree(const std::vector<std::optional<int>>& arr) {
     if (arr.empty() || !arr[0].has_value()) {
-        return nullptr; // Ïóñòîé ìàññèâ èëè êîðåíü null
+        return nullptr; // Пустой массив или корень null
     }
     return buildTreeRec(arr, 0);
 }
 
-// Ïðîâåðêà íà ñèììåòðè÷íîñòü áèíàðíîãî äåðåâà
+// Проверка на симметричность бинарного дерева
 bool isSymmetric(TreeNode* root) {
     if (!root) {
         return true;
@@ -60,7 +60,7 @@ bool isSymmetric(TreeNode* root) {
         if (!t1 || !t2) return false;
         if (t1->val != t2->val) return false;
 
-        // Äîáàâëÿåì â î÷åðåäü â çåðêàëüíîì ïîðÿäêå
+        // Добавляем в очередь в зеркальном порядке
         q.push(t1->left);
         q.push(t2->right);
         q.push(t1->right);
@@ -69,12 +69,12 @@ bool isSymmetric(TreeNode* root) {
     return true;
 }
 
-// Ïîèñê ìèíèìàëüíîé ãëóáèíû
+// Поиск минимальной глубины
 int minDepth(TreeNode* root) {
     if (!root) {
         return 0;
     }
-    std::queue<std::pair<TreeNode*, int>> q; // óçåë è åãî ãëóáèíà
+    std::queue<std::pair<TreeNode*, int>> q; // узел и его глубина
     q.push({ root, 1 });
 
     while (!q.empty()) {
@@ -82,12 +82,12 @@ int minDepth(TreeNode* root) {
         int currentDepth = q.front().second;
         q.pop();
 
-        // Ïðîâåðÿåì, ÿâëÿåòñÿ ëè óçåë ëèñòîì
+        // Проверяем, является ли узел листом
         if (!currentNode->left && !currentNode->right) {
             return currentDepth;
         }
 
-        // Äîáàâëÿåì äî÷åðíèå óçëû â î÷åðåäü
+        // Добавляем дочерние узлы в очередь
         if (currentNode->left) {
             q.push({ currentNode->left, currentDepth + 1 });
         }
@@ -98,19 +98,19 @@ int minDepth(TreeNode* root) {
     return 0;
 }
 
-// Ïîèñê ïðîèçâåäåíèÿ ìèíèìàëüíîãî è ìàêñèìàëüíîãî ýëåìåíòîâ
+// Поиск произведения минимального и максимального элементов
 long long maxMinProduct(TreeNode* root) {
     if (!root) {
-        throw std::invalid_argument("Äåðåâî íå äîëæíî áûòü ïóñòûì");
+        throw std::invalid_argument("Дерево не должно быть пустым");
     }
 
-    // Ïîèñê ìèíèìàëüíîãî ýëåìåíòà
+    // Поиск минимального элемента
     TreeNode* minNode = root;
     while (minNode->left) {
         minNode = minNode->left;
     }
 
-    // Ïîèñê ìàêñèìàëüíîãî ýëåìåíòà
+    // Поиск максимального элемента
     TreeNode* maxNode = root;
     while (maxNode->right) {
         maxNode = maxNode->right;
@@ -119,7 +119,7 @@ long long maxMinProduct(TreeNode* root) {
     return static_cast<long long>(minNode->val) * maxNode->val;
 }
 
-// ßâëÿåòñÿ ëè äåðåâî Â ïîääåðåâîì äëÿ À
+// Является ли дерево В поддеревом для А
 bool isSubtree(TreeNode* root, TreeNode* subRoot) {
     if (!subRoot) return true;
     if (!root) return false;
@@ -129,7 +129,7 @@ bool isSubtree(TreeNode* root, TreeNode* subRoot) {
     return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
 }
 
-// Çåðêàëüíûå óçëû
+// Зеркальные узлы
 int countMirrorNodes(TreeNode* root) {
     if (!root) {
         return 0;

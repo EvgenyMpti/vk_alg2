@@ -26,7 +26,7 @@ TreeNode* buildTree(const std::vector<std::optional<int>>& arr) {
     return buildTreeRec(arr, 0);
 }
 
-// Ïðîâåðêà êîððåêòíîñòè êó÷è
+// Проверка корректности кучи
 bool isHeap(const std::vector<int>& arr, bool isMaxheap) {
     size_t n = arr.size();
     if (n <= 1)
@@ -38,7 +38,7 @@ bool isHeap(const std::vector<int>& arr, bool isMaxheap) {
     else
         compare = std::less_equal<int>();
 
-    // Ïðîâåðÿåì òîëüêî âíóòðåííèå óçëû
+    // Проверяем только внутренние узлы
     for (size_t i = 0; i <= (n / 2) - 1; ++i) {
         size_t leftChildIdx = 2 * i + 1;
         size_t rightChildIdx = 2 * i + 2;
@@ -52,14 +52,14 @@ bool isHeap(const std::vector<int>& arr, bool isMaxheap) {
     return true;
 }
 
-// Ïðîâåðêà íà ïîëíîå áèíàðíîå äåðåâî
+// Проверка на полное бинарное дерево
 bool isCompleteTree(TreeNode* root) {
     if (!root)
         return true;
 
     std::queue<TreeNode*> q;
     q.push(root);
-    bool nullEncountered = false; // âñòðåòèëñÿ ëè óæå null óçåë
+    bool nullEncountered = false; // встретился ли уже null узел
 
     while (!q.empty()) {
         TreeNode* current = q.front();
@@ -79,9 +79,9 @@ bool isCompleteTree(TreeNode* root) {
     return true;
 }
 
-// Îáúåäèíåíèå îòñîðòèðîâàííûõ ìàññèâîâ
+// Объединение отсортированных массивов
 std::vector<int> mergeKSortedArrays(const std::vector<std::vector<int>>& arrays) {
-    // çíà÷åíèå, èíäåêñ_ìàññèâà, èíäåêñ_ýëåìåíòà
+    // значение, индекс_массива, индекс_элемента
     using Element = std::tuple<int, size_t, size_t>;
 
     std::priority_queue<Element, std::vector<Element>, std::greater<Element>> minHeap;
@@ -93,14 +93,14 @@ std::vector<int> mergeKSortedArrays(const std::vector<std::vector<int>>& arrays)
 
     std::vector<int> result;
 
-    // Èçâëå÷åíèå ìèíèìàëüíûõ ýëåìåíòîâ èç êó÷è
+    // Извлечение минимальных элементов из кучи
     while (!minHeap.empty()) {
         auto [value, arrayIdx, elementIdx] = minHeap.top();
         minHeap.pop();
 
         result.push_back(value);
 
-        // Åñëè â òåêóùåì ìàññèâå åñòü ñëåäóþùèé ýëåìåíò, äîáàâëÿåì åãî â êó÷ó
+        // Если в текущем массиве есть следующий элемент, добавляем его в кучу
         size_t nextElementIdx = elementIdx + 1;
         if (nextElementIdx < arrays[arrayIdx].size()) {
             minHeap.push({ arrays[arrayIdx][nextElementIdx], arrayIdx, nextElementIdx });
@@ -110,7 +110,7 @@ std::vector<int> mergeKSortedArrays(const std::vector<std::vector<int>>& arrays)
     return result;
 }
 
-// K íàèìåíüøèé ýëåìåíò
+// K наименьший элемент
 std::optional<int> kthSmallest(TreeNode* root, int k) {
     if (k <= 0) return std::nullopt;
 
@@ -119,13 +119,13 @@ std::optional<int> kthSmallest(TreeNode* root, int k) {
     int count = 0;
 
     while (current || !s.empty()) {
-        // Èäåì âëåâî äî óïîðà, äîáàâëÿÿ óçëû â ñòåê
+        // Идем влево до упора, добавляя узлы в стек
         while (current) {
             s.push(current);
             current = current->left;
         }
 
-        // Äîñòàåì óçåë èç ñòåêà
+        // Достаем узел из стека
         current = s.top();
         s.pop();
 
@@ -133,14 +133,14 @@ std::optional<int> kthSmallest(TreeNode* root, int k) {
         if (count == k)
             return current->val;
 
-        // Ïåðåõîäèì ê ïðàâîìó ïîääåðåâó
+        // Переходим к правому поддереву
         current = current->right;
     }
 
     return std::nullopt;
 }
 
-// K íàèáîëüøèé ýëåìåíò
+// K наибольший элемент
 std::optional<int> kthLargest(TreeNode* root, int k) {
     if (k <= 0) return std::nullopt;
 
@@ -149,13 +149,13 @@ std::optional<int> kthLargest(TreeNode* root, int k) {
     int count = 0;
 
     while (current || !s.empty()) {
-        // Èäåì âïðàâî äî óïîðà, äîáàâëÿÿ óçëû â ñòåê
+        // Идем вправо до упора, добавляя узлы в стек
         while (current) {
             s.push(current);
             current = current->right;
         }
 
-        // Äîñòàåì óçåë èç ñòåêà
+        // Достаем узел из стека
         current = s.top();
         s.pop();
 
@@ -163,7 +163,7 @@ std::optional<int> kthLargest(TreeNode* root, int k) {
         if (count == k)
             return current->val;
 
-        // Ïåðåõîäèì ê ëåâîìó ïîääåðåâó
+        // Переходим к левому поддереву
         current = current->left;
     }
     return std::nullopt;
@@ -176,19 +176,19 @@ int calculateHaBF(TreeNode* node) {
     int leftHeight = calculateHaBF(node->left);
     int rightHeight = calculateHaBF(node->right);
 
-    // Ðàññ÷èòûâàåì è ñîõðàíÿåì balance factor
+    // Рассчитываем и сохраняем balance factor
     node->balance_factor = leftHeight - rightHeight;
 
-    // Âîçâðàùàåì âûñîòó òåêóùåãî óçëà
+    // Возвращаем высоту текущего узла
     return 1 + std::max(leftHeight, rightHeight);
 }
 
-// Ðàñ÷åò Balance factor
+// Расчет Balance factor
 void setBalanceFactors(TreeNode* root) {
     calculateHaBF(root);
 }
 
-// Ïðåîáðàçîâàíèå â çåðêàëüíîå äåðåâî
+// Преобразование в зеркальное дерево
 TreeNode* invertTree(TreeNode* root) {
     if (!root)
         return nullptr;
@@ -200,7 +200,7 @@ TreeNode* invertTree(TreeNode* root) {
         TreeNode* current = q.front();
         q.pop();
 
-        // Îáìåí ëåâîãî è ïðàâîãî ïîòîìêîâ
+        // Обмен левого и правого потомков
         std::swap(current->left, current->right);
 
         if (current->left)

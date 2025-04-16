@@ -6,7 +6,7 @@
 #include <map>
 #include <cmath>
 
-// ôóíêöèÿ äëÿ ïðîâåðêè àíàãðàìì
+// функция для проверки анаграмм
 bool compareAnagramGroups(std::vector<std::vector<std::string>> result,
     std::vector<std::vector<std::string>> expected) {
     if (result.size() != expected.size()) return false;

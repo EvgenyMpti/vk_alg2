@@ -22,30 +22,30 @@ struct TreeNode {
     }
 };
 
-// Ïðîâåðêà êîððåêòíîñòè êó÷è
+// Проверка корректности кучи
 bool isHeap(const std::vector<int>& arr, bool heapType = 1);
 
-// Ïðîâåðêà íà ïîëíîå áèíàðíîå äåðåâî
+// Проверка на полное бинарное дерево
 bool isCompleteTree(TreeNode* root);
 
-// Îáúåäèíåíèå îòñîðòèðîâàííûõ ìàññèâîâ
+// Объединение отсортированных массивов
 std::vector<int> mergeKSortedArrays(const std::vector<std::vector<int>>& arrays);
 
-// K íàèìåíüøèé ýëåìåíò
+// K наименьший элемент
 std::optional<int> kthSmallest(TreeNode* root, int k);
 
-// K íàèáîëüøèé ýëåìåíò
+// K наибольший элемент
 std::optional<int> kthLargest(TreeNode* root, int k);
 
-// Âñïîìîãàòåëüíàÿ ôóíêöèÿ äëÿ ðàñ÷åòà âûñîò è balance factor
+// Вспомогательная функция для расчета высот и balance factor
 int calculateHaBF(TreeNode* node);
 
-// Ðàñ÷åò Balance factor
+// Расчет Balance factor
 void setBalanceFactors(TreeNode* root);
 
-// Ïðåîáðàçîâàíèå â çåðêàëüíîå äåðåâî
+// Преобразование в зеркальное дерево
 TreeNode* invertTree(TreeNode* root);
 
-// äëÿ òåñòîâ
+// для тестов
 TreeNode* buildTree(const std::vector<std::optional<int>>& arr);
 TreeNode* buildTreeRec(const std::vector<std::optional<int>>& arr, size_t i);

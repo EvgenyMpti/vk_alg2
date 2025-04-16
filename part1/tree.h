@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <limits>
 
-// Îïðåäåëåíèå äëÿ óçëà áèíàðíîãî äåðåâà
+// Определение для узла бинарного дерева
 struct TreeNode {
     int val;
     TreeNode* left;
@@ -20,26 +20,26 @@ struct TreeNode {
 
 TreeNode* buildTreeRec(const std::vector<std::optional<int>>& arr, size_t i);
 
-// Âîññòàíîâëåíèå áèíàðíîãî äåðåâà èç ìàññèâà
+// Восстановление бинарного дерева из массива
 TreeNode* buildTree(const std::vector<std::optional<int>>& arr);
 
-// Ïðîâåðêà íà ñèììåòðè÷íîñòü áèíàðíîãî äåðåâà
+// Проверка на симметричность бинарного дерева
 bool isSymmetric(TreeNode* root);
 
-// Ïîèñê ìèíèìàëüíîé ãëóáèíû
+// Поиск минимальной глубины
 int minDepth(TreeNode* root);
 
-// Ïîèñê ïðîèçâåäåíèÿ ìèíèìàëüíîãî è ìàêñèìàëüíîãî ýëåìåíòîâ
-// Ïðèíèìàåò TreeNode* áèíàðíîãî äåðåâà ÏÎÈÑÊÀ
+// Поиск произведения минимального и максимального элементов
+// Принимает TreeNode* бинарного дерева ПОИСКА
 long long maxMinProduct(TreeNode* root);
 
-// Ñðàâíåíèå äâóõ äåðåâüåâ
+// Сравнение двух деревьев
 bool isSameTree(TreeNode* p, TreeNode* q);
 
-// ßâëÿåòñÿ ëè äåðåâî Â ïîääåðåâîì äëÿ À
+// Является ли дерево В поддеревом для А
 bool isSubtree(TreeNode* root, TreeNode* subRoot);
 
 int dfsMirror(TreeNode* left, TreeNode* right);
 
-// Çåðêàëüíûå óçëû
+// Зеркальные узлы
 int countMirrorNodes(TreeNode* root);
